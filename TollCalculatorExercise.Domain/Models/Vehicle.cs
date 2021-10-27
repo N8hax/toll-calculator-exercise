@@ -4,10 +4,10 @@ namespace TollCalculatorExercise.Domain.Models
 {
     public class Vehicle
     {
-        public VehicleTypeEnum VehicleType { get; }
         public Vehicle(VehicleTypeEnum vehicleType)
         {
             VehicleType = vehicleType;
         }
+        public VehicleTypeEnum VehicleType { get; private set; }
     }
 }

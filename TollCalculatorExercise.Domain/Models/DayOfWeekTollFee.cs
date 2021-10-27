@@ -2,8 +2,15 @@
 
 namespace TollCalculatorExercise.Domain.Models
 {
-    public class DayOfWeekTollFee : TollFeeBase
+    public class DayOfWeekTollFee : Entity
     {
-        public DayOfWeek DayOfWeek { get; set; }
+        public DayOfWeekTollFee(DayOfWeek dayOfWeek, TollFee tollFee)
+        {
+            DayOfWeek = dayOfWeek;
+            TollFee = tollFee;
+        }
+
+        public DayOfWeek DayOfWeek { get; private set; }
+        public TollFee TollFee { get; private set; }
     }
 }

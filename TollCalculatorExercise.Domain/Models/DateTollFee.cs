@@ -2,9 +2,18 @@
 
 namespace TollCalculatorExercise.Domain.Models
 {
-    public class DateTollFee : TollFeeBase
+    public class DateTollFee : Entity
     {
-        public DateTime StartDateIncluded { get; set; }
-        public DateTime EndDateIncluded { get; set; }
+        public DateTollFee(DateTime startDateIncluded, DateTime endDateIncluded, TollFee tollFee)
+        {
+            StartDateIncluded = startDateIncluded;
+            EndDateIncluded = endDateIncluded;
+            TollFee = tollFee;
+        }
+
+        public DateTime StartDateIncluded { get; private set; }
+        public DateTime EndDateIncluded { get; private set; }
+        public TollFee TollFee { get; private set; }
+
     }
 }

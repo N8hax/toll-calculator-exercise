@@ -2,8 +2,15 @@
 
 namespace TollCalculatorExercise.Domain.Models
 {
-    public class VehicleTypeTollFee : TollFeeBase
+    public class VehicleTypeTollFee : Entity
     {
-        public VehicleTypeEnum VehicleType { get; set; }
+        public VehicleTypeTollFee(VehicleTypeEnum vehicleType, TollFee tollFee)
+        {
+            VehicleType = vehicleType;
+            TollFee = tollFee;
+        }
+
+        public VehicleTypeEnum VehicleType { get; private set; }
+        public TollFee TollFee { get; private set; }
     }
 }

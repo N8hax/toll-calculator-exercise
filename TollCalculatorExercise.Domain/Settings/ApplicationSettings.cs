@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TollCalculatorExercise.Domain.Settings
+﻿namespace TollCalculatorExercise.Domain.Settings
 {
     public class ApplicationSettings
     {
