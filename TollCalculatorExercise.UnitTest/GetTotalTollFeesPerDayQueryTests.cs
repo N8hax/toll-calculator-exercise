@@ -74,12 +74,15 @@ namespace TollCalculatorExercise.UnitTest
             }
         }
 
-        public static IEnumerable<TestCaseData> FeeIsTwentyNineTestData
+        public static IEnumerable<TestCaseData> FeeIsFortySevenTestData
         {
             get
             {
-                yield return new TestCaseData(new DateTime[] { new DateTime(2021, 10, 18, 6, 0, 0) , new DateTime(2021, 10, 18, 15, 0, 0), new DateTime(2021, 10, 18, 18, 0, 0) });
-                yield return new TestCaseData(new DateTime[] { new DateTime(2021, 10, 18, 6, 30, 0), new DateTime(2021, 10, 18, 6, 30, 0), new DateTime(2021, 10, 18, 11, 30, 0), new DateTime(2021, 10, 18, 14, 40, 0) });
+                yield return new TestCaseData(new DateTime[] { 
+                    new DateTime(2021, 10, 18, 6, 30, 0), new DateTime(2021, 10, 18, 6, 20, 0), 
+                    new DateTime(2021, 10, 18, 11, 30, 0),
+                    new DateTime(2021, 10, 18, 12, 31, 0),
+                    new DateTime(2021, 10, 18, 14, 59, 0), new DateTime(2021, 10, 18, 15, 29, 0), new DateTime(2021, 10, 18, 15, 31, 0) });
             }
         }
 
@@ -310,8 +313,8 @@ namespace TollCalculatorExercise.UnitTest
             Assert.AreEqual(8, task.Data);
         }
 
-        [TestCaseSource(typeof(GetTotalTollFeesPerDayQueryTests), "FeeIsTwentyNineTestData")]
-        public async Task GetTotalTollFeesPerDayQuery_FeeIsTwentyNine_ShouldReturnTwentyNine(DateTime[] dates)
+        [TestCaseSource(typeof(GetTotalTollFeesPerDayQueryTests), "FeeIsFortySevenTestData")]
+        public async Task GetTotalTollFeesPerDayQuery_FeeIsFortySeven_ShouldReturnFortySeven(DateTime[] dates)
         {
             // Arrange
             var vehicleType = VehicleTypeEnum.Car;
@@ -321,7 +324,7 @@ namespace TollCalculatorExercise.UnitTest
             var task = await _getTotalTollFeesPerDayQueryHandler.Handle(query);
 
             // Assert
-            Assert.AreEqual(29, task.Data);
+            Assert.AreEqual(47, task.Data);
         }
     }
 }

@@ -83,7 +83,7 @@ namespace TollCalculatorExercise.Services.Features.TollFee.Queries
                     // Add current interval maximum fee to the total fee
                     totalFee += currentIntervalMaxFee;
                     // Moving to the next interval
-                    currentIntervalStartDate = currentIntervalStartDate.AddSeconds(_config.CHARGE_INTERVAL_IN_SECONDS);
+                    currentIntervalStartDate = date;
                     // Set the new interval maximum fee
                     currentIntervalMaxFee = currentDateFee;
                 }
